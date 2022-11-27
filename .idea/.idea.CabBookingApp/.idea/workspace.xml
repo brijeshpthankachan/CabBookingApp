@@ -10,20 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2587415d-fc9d-4f93-9e81-dd6d212bade6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Migrations/20221127134737_Initial.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20221127134737_Initial.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Controllers/HomeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CabBookingApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CabBookingApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/_ViewStart.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/_ViewStart.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20221127055905_Initial.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20221127055905_Initial.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +125,8 @@
       <workItem from="1669500758083" duration="82000" />
       <workItem from="1669521612156" duration="11597000" />
       <workItem from="1669540026814" duration="87000" />
-      <workItem from="1669554602684" duration="5789000" />
+      <workItem from="1669554602684" duration="8301000" />
+      <workItem from="1669569840295" duration="1031000" />
     </task>
     <task id="LOCAL-00001" summary="Boilerplate">
       <created>1669487010903</created>
@@ -155,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669540069627</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Sign In Functionality">
+      <created>1669561818882</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669561818882</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +181,7 @@
     <MESSAGE value="Boilerplate" />
     <MESSAGE value="Added Registration Page" />
     <MESSAGE value="User Registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="User Registration" />
+    <MESSAGE value="Added Sign In Functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Sign In Functionality" />
   </component>
 </project>
