@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using MoviesApp.Models.ViewModels;
 
 namespace CabBookingApp.Areas.Accounts.Controllers;
 
@@ -25,13 +26,41 @@ public class HomeController : Controller
     }
     
     
-    [Route("/login")]
     [HttpGet]
+    [Route("/Login")]
+    [Route("Account/Login")]
+
     public IActionResult Login()
     {
         return View();
     }
-    
+
+
+    [HttpPost]
+    [Route("/Login")]
+    [Route("Account/Login")]
+    public async Task<IActionResult> Login(LoginViewModel model)
+    {
+        if (!ModelState.IsValid) return View(model);
+
+        var user = await _userManager.FindByEmailAsync(model.Email);
+        
+        if(user==null)
+        {
+            ModelState.AddModelError("", "Invalid Details");
+            return View(model);
+        }
+        
+        Console.WriteLine(user.FirstName);
+        var res = await _signInManager.PasswordSignInAsync(user, model.Password, true, true);
+
+        if (res.Succeeded)
+        {
+            // return RedirectToAction("Index","Home", new {Area=""});
+            return RedirectToAction("Index","Home",user);
+        }
+        return View(model);
+    }
 
     [HttpPost]
     [Route("")]
@@ -57,7 +86,7 @@ public class HomeController : Controller
             if (res.Succeeded)
             {
                 Console.WriteLine("hi");
-                return RedirectToAction(nameof(Index));
+                return Redirect("");
             }
         }
         ModelState.AddModelError("","An Error Has Occured While Creating New User");

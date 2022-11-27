@@ -10,26 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2587415d-fc9d-4f93-9e81-dd6d212bade6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Areas/Accounts/Controllers/HomeController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Areas/Accounts/Views/_ViewImports.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Areas/Accounts/Views/_ViewStart.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GlobalUsings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20221127055905_Initial.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20221127055905_Initial.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ApplicationUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ViewModels/LoginViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ViewModels/RegisterViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ScaffoldingReadMe.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Migrations/20221127134737_Initial.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Migrations/20221127134737_Initial.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CabBookingApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CabBookingApp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20221127055905_Initial.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20221127055905_Initial.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +38,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/81a3bcf4bb6aa5e62a9839f9cfeeba6126496f4fa07d1e57b27a5176e42525/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1c28bae473d2c67c48df1154e19757ca558c6aa35425dc988fad559fb64d5/KnownRouteValueConstraint.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -136,6 +131,8 @@
       <workItem from="1669486970618" duration="10774000" />
       <workItem from="1669500758083" duration="82000" />
       <workItem from="1669521612156" duration="11597000" />
+      <workItem from="1669540026814" duration="87000" />
+      <workItem from="1669554602684" duration="5789000" />
     </task>
     <task id="LOCAL-00001" summary="Boilerplate">
       <created>1669487010903</created>
@@ -151,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669500787081</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="User Registration">
+      <created>1669540069627</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669540069627</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,26 +179,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Boilerplate" />
     <MESSAGE value="Added Registration Page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Registration Page" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml</url>
-          <line>14</line>
-          <properties documentPath="C:\Users\Brp\RiderProjects\CabBookingApp\Areas\Accounts\Views\Home\Login.cshtml" initialLine="14" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="User Registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="User Registration" />
   </component>
 </project>

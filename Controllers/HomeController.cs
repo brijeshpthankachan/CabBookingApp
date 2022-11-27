@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CabBookingApp.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -12,10 +14,20 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [Route("/home")]
     public IActionResult Index()
     {
         return View();
     }
+    
+    [HttpGet]
+    [Route("/home")]
+    public IActionResult Index(ApplicationUser model)
+    {
+        // Console.WriteLine(model.FirstName);
+        return View(model);
+    }
+
 
     public IActionResult Privacy()
     {

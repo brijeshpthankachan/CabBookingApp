@@ -65,7 +65,7 @@
                         <span style="margin-top:5%">
                             <b>Register Now And get 60% Off ?. Try</b>
                         </span>
-                        <a href="" class="btn btn-outline-secondary"> Register </a>
+                        <a  asp-area="Accounts" asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary"> Register </a>
                     </div>
 
                 </div>
@@ -77,31 +77,19 @@
             <form method="post">
 
 
-                <div class="card border-secondary mb-3" style="max-width: 20rem;">
-                    <div class="card-header">Sign In</div>
-                    <div class="card-body">
-                        <div>
-                            <label class="form-label" asp-for="Email"></label>
-                            <input class="form-control" asp-for="Email" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div>
-                            <label class="form-label" asp-for="Password"></label>
-                            <input class="form-control" asp-for="Password" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-
-                    </div>
-
-
+                <div>
+                    <label class="form-label" asp-for="Email"></label>
+                    <input class="form-control" asp-for="Email"/>
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
-
-
-                <div asp-validation-summary="ModelOnly"></div>
-
+                <div>
+                    <label class="form-label" asp-for="Password"></label>
+                    <input type="password" class="form-control" asp-for="Password"/>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
                 <hr>
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-outline-success" type="submit">Sign In</button>
+                    <input  type="submit" class="btn btn-outline-success" value="Sign In">
                 </div>
 
                 <div asp-validation-summary="All"></div>

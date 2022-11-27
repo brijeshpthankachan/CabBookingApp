@@ -1,7 +1,7 @@
 
 namespace CabBookingApp.Data;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext :  IdentityDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)   
     {
