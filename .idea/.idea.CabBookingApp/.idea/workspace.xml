@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2587415d-fc9d-4f93-9e81-dd6d212bade6" name="Changes" comment="">
+    <list default="true" id="2587415d-fc9d-4f93-9e81-dd6d212bade6" name="Changes" comment="one">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/_ViewStart.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/_ViewStart.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
     </list>
@@ -126,7 +123,8 @@
       <workItem from="1669521612156" duration="11597000" />
       <workItem from="1669540026814" duration="87000" />
       <workItem from="1669554602684" duration="8301000" />
-      <workItem from="1669569840295" duration="1031000" />
+      <workItem from="1669569840295" duration="1409000" />
+      <workItem from="1669606698478" duration="9311000" />
     </task>
     <task id="LOCAL-00001" summary="Boilerplate">
       <created>1669487010903</created>
@@ -156,7 +154,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669561818882</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="User Home Partial">
+      <created>1669572494749</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669572494749</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Unversioned Commit">
+      <created>1669572633202</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669572633202</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +181,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -182,6 +206,8 @@
     <MESSAGE value="Added Registration Page" />
     <MESSAGE value="User Registration" />
     <MESSAGE value="Added Sign In Functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Sign In Functionality" />
+    <MESSAGE value="User Home Partial" />
+    <MESSAGE value="Unversioned Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unversioned Commit" />
   </component>
 </project>
