@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -43,6 +44,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 
@@ -51,8 +53,8 @@ app.MapControllerRoute(
     "area",
     "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    "default",
-    "{controller=Home}/{action=Index}/{id?}");
+// app.MapControllerRoute(
+//     "default",
+//     "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

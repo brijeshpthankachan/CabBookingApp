@@ -24,6 +24,5 @@ public class RegisterViewModel
     [Display(Name = "Confirm Password")]
     public string? ConfirmPassword { get; set; }
 
-    [Required]
-    public bool TermsAndConditions { get; set; }
+    [Required] public bool TermsAndConditions { get; set; }
 }

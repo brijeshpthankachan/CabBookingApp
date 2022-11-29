@@ -1,4 +1,3 @@
-
 namespace CabBookingApp.Models;
 
 public class ApplicationUser : IdentityUser

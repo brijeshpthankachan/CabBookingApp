@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CabBookingApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221127134737_Initial")]
-    partial class Initial
+    [Migration("20221129070018_Added IsApprovedField")]
+    partial class AddedIsApprovedField
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,100 @@ namespace CabBookingApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CabBookingApp.Models.ViewModels.CabInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CabType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DriverInfosID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("VehicleRegistrationNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DriverInfosID")
+                        .IsUnique();
+
+                    b.ToTable("CabInfos");
+                });
+
+            modelBuilder.Entity("CabBookingApp.Models.ViewModels.DriverInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AadharNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AddresLineFivePin")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AddresLineFourState")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddresLineThreeLocality")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLineOneHouseNameOrHouseNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressLineTwoDistrict")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ApplicationUsersId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CabInfosId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsApprovedToDrive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LicenceNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PanNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("PhoneNumber")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("PhotoGraph")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUsersId");
+
+                    b.ToTable("DriverInfos");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -251,6 +345,28 @@ namespace CabBookingApp.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
+            modelBuilder.Entity("CabBookingApp.Models.ViewModels.CabInfo", b =>
+                {
+                    b.HasOne("CabBookingApp.Models.ViewModels.DriverInfo", "DriverInfos")
+                        .WithOne("CabInfos")
+                        .HasForeignKey("CabBookingApp.Models.ViewModels.CabInfo", "DriverInfosID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DriverInfos");
+                });
+
+            modelBuilder.Entity("CabBookingApp.Models.ViewModels.DriverInfo", b =>
+                {
+                    b.HasOne("CabBookingApp.Models.ApplicationUser", "ApplicationUsers")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUsers");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -299,6 +415,12 @@ namespace CabBookingApp.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CabBookingApp.Models.ViewModels.DriverInfo", b =>
+                {
+                    b.Navigation("CabInfos")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

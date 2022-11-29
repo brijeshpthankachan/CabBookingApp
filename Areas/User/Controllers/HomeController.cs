@@ -1,10 +1,10 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CabBookingApp.Controllers;
 
-[Authorize]
+[Area("User")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -14,25 +14,21 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    [Route("/home")]
+    [Route("/user/home")]
     public IActionResult Index()
     {
         return View();
     }
     
     [HttpGet]
-    [Route("/home")]
+    [Route("/user/home")]
     public IActionResult Index(ApplicationUser model)
     {
         // Console.WriteLine(model.FirstName);
         return View(model);
     }
 
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+    
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
