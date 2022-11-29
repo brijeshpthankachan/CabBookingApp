@@ -9,8 +9,8 @@ public class DriverKycModel
 
     [Required] public string VehicleRegistrationNumber { get; set; }
     [Required] public string CabType { get; set; }
-    public DriverInfo DriverInfos { get; set; }
-    [Required] public int DriverInfosID { get; set; }
+     public DriverInfo DriverInfos { get; set; }
+     public int DriverInfosID { get; set; }
 
 
     [Required] public string LicenceNumber { get; set; }
@@ -23,9 +23,8 @@ public class DriverKycModel
     [Required] public int AadharNumber { get; set; }
     [Required] public long PhoneNumber { get; set; }
     [Required] public string PanNumber { get; set; }
-    [Required] public string PhotoGraph { get; set; }
-    public ApplicationUser ApplicationUsers { get; set; }
-    [Required] public string ApplicationUsersId { get; set; }
-    [Required] public CabInfo CabInfos { get; set; }
-    [Required] public string CabInfosId { get; set; }
+    public ApplicationUser? ApplicationUsers { get; set; }
+    public string ApplicationUsersId { get; set; }
+    public CabInfo CabInfos { get; set; }
+    public string CabInfosId { get; set; }
 }

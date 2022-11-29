@@ -54,17 +54,20 @@ public class HomeController : Controller
             return View(model);
         }
 
-        Console.WriteLine(user.FirstName);
         var res = await _signInManager.PasswordSignInAsync(user, model.Password, true, true);
         var role = _userManager.GetRolesAsync(user);
+        Console.WriteLine(model.Email);
+        Console.WriteLine(user.FirstName);
+        Console.WriteLine("hiihih");
+        Console.WriteLine(user.Id);
 
         if (res.Succeeded)
             return role.Result.Contains("Admin")
-                ? RedirectToAction("Index", "Home", new { Area = "Admin", id = user.Id })
+                ? RedirectToAction("Index", "Home", new { Area = "Admin", user })
                 : RedirectToAction("Index", "Home",
                     role.Result.Contains("Driver")
                         ? new { Area = "Driver", id = user.Id }
-                        : new { Area = "User", id = user.Id });
+                        : new { Area = "User", id = user });
         return View(model);
     }
 
