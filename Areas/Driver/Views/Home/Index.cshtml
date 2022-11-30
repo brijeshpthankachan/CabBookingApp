@@ -1,67 +1,11 @@
 @model DriverKycModel
 
 @{
-    Layout = null;
+    Layout = "_NewLayout";
 }
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="~/css/bootstrap_sketchy.css">
-    <title>Document</title>
-</head>
-<body>
 
-    <header>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Welcome User</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="true" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse show" id="navbarColor03" style="">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                Home
-                                <span class="visually-hidden">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Bookings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"> </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Separated link</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-
-    </header>
-
-    
 <div class="container bg-light">
 
         <div class="w-100 d-flex align-items-center justify-content-center pt-3 flex-column">
@@ -74,68 +18,71 @@
 
                 <div class="" style="width:20%">
 
-                    <label class="form-lable">First Name</label>
-                    <input class="form-control input-lg w-100" type="text">
+                    <label asp-for="FirstName" class="form-lable" >First Name</label>
+                    <input asp-for="FirstName" class="form-control input-lg w-100" type="text">
+                    
+                    <label asp-for="LastName" class="form-label">Last Name</label>
+                    <input asp-for="LastName" class="form-control" type="text">
 
-                    <label class="form-label">Last Name</label>
-                    <input class="form-control" type="text">
+                    <label asp-for="Email" class="form-lable">Email</label>
+                    <input asp-for="Email" class="form-control" type="Email">
 
-                    <label class="form-lable">Email</label>
-                    <input class="form-control" type="Email">
-
-                    <label class="form-label">Phone Number</label>
-                    <input class="form-control" type="text">
+                    <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                    <input asp-for="PhoneNumber" class="form-control" type="text">
 
                     <label class="form-lable">R C Number</label>
-                    <input class="form-control" type="text">
+                    <input asp-for="VehicleRegistrationNumber" class="form-control" type="text">
+                    <span asp-validation-for="VehicleRegistrationNumber" class="text-danger"></span>
 
-                    <label class="form-label">Cab Type</label>
-                    <input class="form-control" type="text">
 
-                    <label class="form-lable">License Number</label>
-                    <input class="form-control" type="text">
+                    <label  asp-for="CabType" class="form-label">Cab Type</label>
+                    <input asp-for="CabType" class="form-control" type="text">
+                    <span asp-validation-for="CabType" class="text-danger"></span>
 
-                    <label class="form-label">Aadhar Number</label>
-                    <input class="form-control" type="text">
+                    <label asp-for="LicenceNumber" class="form-lable">License Number</label>
+                    <input asp-for="LicenceNumber" class="form-control" type="text">
+                    <span asp-validation-for="LicenceNumber" class="text-danger"></span>
 
-                    <label class="form-lable">Pan Number</label>
-                    <input class="form-control" type="text">
+                    <label  asp-for="AadharNumber" class="form-label">Aadhar Number</label>
+                    <input asp-for="AadharNumber" class="form-control" type="text">
+                    <span asp-validation-for="AadharNumber" class="text-danger"></span>
+
+                    <label  asp-for="PanNumber" class="form-lable">Pan Number</label>
+                    <input asp-for="PanNumber" class="form-control" type="text">
+                    <span asp-validation-for="PanNumber" class="text-danger"></span>
 
                 </div>
 
                 <div class="w-50" style="width:30%">
 
-                    <label class="form-lable">House NUmber</label>
-                    <input class="form-control" type="text">
+                    <label  asp-for="AddressLineOneHouseNameOrHouseNo" class="form-lable">House NUmber</label>
+                    <input asp-for="AddressLineOneHouseNameOrHouseNo" class="form-control" type="text">
+                    <span asp-validation-for="AddressLineOneHouseNameOrHouseNo" class="text-danger"></span>
 
-                    <label class="form-label">Locality</label>
-                    <input class="form-control" type="text">
+                    <label asp-for="AddresLineThreeLocality" class="form-label">Locality</label>
+                    <input asp-for="AddresLineThreeLocality" class="form-control" type="text">
+                    <span asp-validation-for="AddresLineThreeLocality" class="text-danger"></span>
 
-                    <label class="form-lable">District</label>
-                    <input class="form-control" type="text">
+                    <label asp-for="AddressLineTwoDistrict" class="form-lable">District</label>
+                    <input  asp-for="AddressLineTwoDistrict" class="form-control" type="text">
+                    <span asp-validation-for="AddressLineTwoDistrict" class="text-danger"></span>
 
                     <label class="form-label">State</label>
-                    <input class="form-control" type="text">
+                    <input asp-for="AddresLineFourState" class="form-control" type="text">
+                    <span asp-validation-for="AddresLineFourState" class="text-danger"></span>
 
-                    <label class="form-lable">PIN Code</label>
-                    <input class="form-control" type="text">
-
+                    <label asp-for="AddresLineFivePin"  class="form-lable">PIN Code</label>
+                    <input asp-for="AddresLineFivePin" class="form-control" type="text">
+                    <span asp-validation-for="AddresLineFivePin" class="text-danger"></span>
 
                 </div>
-
+ 
 
             </div>
-
+        <div class="d-flex gap-2 mt-2 justify-content-end">
+            <button class="btn-lg btn btn-outline-primary" type="submit">Submit Details</button>
+        </div>
     </form>
 
-        <div class="d-flex gap-2 mt-2 justify-content-end">
-            <button class="btn-lg btn btn-outline-primary" type="button">Submit Details</button>
-        </div>
+   
 </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-</body>
-</html>

@@ -5,8 +5,6 @@ public class DriverKycModel
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
-    public long Phone { get; set; }
-
     [Required] public string VehicleRegistrationNumber { get; set; }
     [Required] public string CabType { get; set; }
      public DriverInfo DriverInfos { get; set; }

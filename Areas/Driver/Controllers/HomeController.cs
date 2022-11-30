@@ -19,20 +19,43 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Index(string id)
     {
-        // Console.WriteLine(x.UserName);
-        // Console.WriteLine(x.Email);
-        // Console.WriteLine("hihihihihihihihih");
-        // Console.WriteLine(id);
+
         var user = _userManager.FindByIdAsync(id);
         return  View(new DriverKycModel()
         {
             ApplicationUsersId = id,
             ApplicationUsers = user.Result,
-            // ApplicationUsers = x,
-            // FirstName = x.FirstName,
+            FirstName = user.Result.FirstName,
+            LastName = user.Result.LastName,
+            Email = user.Result.Email,
         });
+        // return View();
     }
 
- 
+    [Route("/driver/home")]
+    [HttpPost]
+    public IActionResult Index(DriverKycModel model)
+    {
+
+        DriverInfo dr = new DriverInfo()
+        {
+            LicenceNumber = model.LicenceNumber,
+            AddressLineOneHouseNameOrHouseNo = model.AddressLineOneHouseNameOrHouseNo,
+            AddressLineTwoDistrict = model.AddressLineTwoDistrict,
+            AddresLineThreeLocality = model.AddresLineThreeLocality,
+            AddresLineFourState = model.AddresLineFourState,
+            AddresLineFivePin = model.AddresLineFivePin,
+            AadharNumber = model.AadharNumber,
+            PhoneNumber = model.PhoneNumber,
+            PanNumber = model.PanNumber,
+            ApplicationUsers = model.ApplicationUsers,
+            ApplicationUsersId = model.ApplicationUsersId,
+            
+
+        };
+        
+        return View();
+    }
+        
      
 }
