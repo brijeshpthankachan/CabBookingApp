@@ -9,21 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2587415d-fc9d-4f93-9e81-dd6d212bade6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/04ade5a7-0479-4cb4-83f2-991961b2ba32.vsidx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/4ac81a88-e88d-4aea-9055-9e978b01da77.vsidx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/ce0a24ae-245f-4209-b153-15ef0cfda406.vsidx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Shared/_NewLayout.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wwwroot/css/bootstrap_sketchy.css" afterDir="false" />
+    <list default="true" id="2587415d-fc9d-4f93-9e81-dd6d212bade6" name="Changes" comment="Partially Completed Driver Verification">
+      <change afterPath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/501a10f7-a240-445e-900b-6f3557d60a62.vsidx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/CabBookingApp/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/CabBookingApp/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Driver/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Driver/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Driver/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Driver/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Driver/Views/_ViewStart.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Driver/Views/_ViewStart.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobalUsings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlobalUsings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/DriverInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DriverInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ViewModels/DriverKycModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ViewModels/DriverKycModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/ce0a24ae-245f-4209-b153-15ef0cfda406.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +137,7 @@
       <workItem from="1669735943001" duration="432000" />
       <workItem from="1669737049264" duration="2000" />
       <workItem from="1669742689795" duration="2078000" />
-      <workItem from="1669779818535" duration="11905000" />
+      <workItem from="1669779818535" duration="20930000" />
     </task>
     <task id="LOCAL-00001" summary="Boilerplate">
       <created>1669487010903</created>
@@ -226,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669746246589</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Partially Completed Driver Verification">
+      <created>1669821502264</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669821502264</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +267,7 @@
     <MESSAGE value="Completed User Home Page" />
     <MESSAGE value="Added authentication and authorization for user,driver,admin" />
     <MESSAGE value="Added Ui For Driver Role" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Ui For Driver Role" />
+    <MESSAGE value="Partially Completed Driver Verification" />
+    <option name="LAST_COMMIT_MESSAGE" value="Partially Completed Driver Verification" />
   </component>
 </project>
