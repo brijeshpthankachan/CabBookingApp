@@ -22,33 +22,6 @@ namespace CabBookingApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CabBookingApp.Models.ViewModels.CabInfo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CabType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DriverInfosID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("VehicleRegistrationNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DriverInfosID")
-                        .IsUnique();
-
-                    b.ToTable("CabInfos");
-                });
-
             modelBuilder.Entity("CabBookingApp.Models.ViewModels.DriverInfo", b =>
                 {
                     b.Property<int>("Id")
@@ -60,52 +33,48 @@ namespace CabBookingApp.Migrations
                     b.Property<int>("AadharNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("AddresLineFivePin")
-                        .HasColumnType("int");
-
-                    b.Property<string>("AddresLineFourState")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AddresLineThreeLocality")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AddressLineOneHouseNameOrHouseNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AddressLineTwoDistrict")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ApplicationUsersId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CabInfosId")
+                    b.Property<string>("CabName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsApprovedToDrive")
-                        .HasColumnType("bit");
+                    b.Property<string>("CabType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("District")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HouseNameOrNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IsApprovedToDrive")
+                        .HasColumnType("int");
 
                     b.Property<string>("LicenceNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PanNumber")
+                    b.Property<string>("Locality")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("PhoneNumber")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("PhotoGraph")
+                    b.Property<int>("PinCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RcNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -342,17 +311,6 @@ namespace CabBookingApp.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
-            modelBuilder.Entity("CabBookingApp.Models.ViewModels.CabInfo", b =>
-                {
-                    b.HasOne("CabBookingApp.Models.ViewModels.DriverInfo", "DriverInfos")
-                        .WithOne("CabInfos")
-                        .HasForeignKey("CabBookingApp.Models.ViewModels.CabInfo", "DriverInfosID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DriverInfos");
-                });
-
             modelBuilder.Entity("CabBookingApp.Models.ViewModels.DriverInfo", b =>
                 {
                     b.HasOne("CabBookingApp.Models.ApplicationUser", "ApplicationUsers")
@@ -412,12 +370,6 @@ namespace CabBookingApp.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CabBookingApp.Models.ViewModels.DriverInfo", b =>
-                {
-                    b.Navigation("CabInfos")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

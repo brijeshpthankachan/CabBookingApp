@@ -1,8 +1,3 @@
-using CabBookingApp.Data;
-using CabBookingApp.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -12,7 +7,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-    
 });
 
 
@@ -26,7 +20,6 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(option =>
     option.User.RequireUniqueEmail = true;
     option.Lockout.AllowedForNewUsers = false;
     option.SignIn.RequireConfirmedPhoneNumber = false;
-    
 }).AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
@@ -46,7 +39,6 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 
 
 app.MapControllerRoute(

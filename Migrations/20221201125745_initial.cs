@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CabBookingApp.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -160,6 +160,37 @@ namespace CabBookingApp.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "DriverInfos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LicenceNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HouseNameOrNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    District = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Locality = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PinCode = table.Column<int>(type: "int", nullable: false),
+                    AadharNumber = table.Column<int>(type: "int", nullable: false),
+                    PhoneNumber = table.Column<long>(type: "bigint", nullable: false),
+                    RcNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CabType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CabName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsApprovedToDrive = table.Column<int>(type: "int", nullable: false),
+                    ApplicationUsersId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DriverInfos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DriverInfos_AspNetUsers_ApplicationUsersId",
+                        column: x => x.ApplicationUsersId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -198,6 +229,11 @@ namespace CabBookingApp.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DriverInfos_ApplicationUsersId",
+                table: "DriverInfos",
+                column: "ApplicationUsersId");
         }
 
         /// <inheritdoc />
@@ -217,6 +253,9 @@ namespace CabBookingApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "DriverInfos");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -1,8 +1,7 @@
 using System.Diagnostics;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CabBookingApp.Controllers;
+namespace CabBookingApp.Areas.User.Controllers;
 
 [Area("User")]
 public class HomeController : Controller
@@ -19,7 +18,7 @@ public class HomeController : Controller
     {
         return View();
     }
-    
+
     [HttpGet]
     [Route("/user/home")]
     public IActionResult Index(ApplicationUser model)
@@ -28,7 +27,6 @@ public class HomeController : Controller
         return View(model);
     }
 
-    
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

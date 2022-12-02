@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using MoviesApp.Models.ViewModels;
 
 namespace CabBookingApp.Areas.Accounts.Controllers;
 
@@ -8,9 +7,9 @@ namespace CabBookingApp.Areas.Accounts.Controllers;
 public class HomeController : Controller
 {
     private readonly ApplicationDbContext _db;
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
     public HomeController(ApplicationDbContext db, UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
@@ -56,18 +55,37 @@ public class HomeController : Controller
 
         var res = await _signInManager.PasswordSignInAsync(user, model.Password, true, true);
         var role = _userManager.GetRolesAsync(user);
-        Console.WriteLine(model.Email);
-        Console.WriteLine(user.FirstName);
-        Console.WriteLine("hiihih");
-        Console.WriteLine(user.Id);
 
         if (res.Succeeded)
-            return role.Result.Contains("Admin")
-                ? RedirectToAction("Index", "Home", new { Area = "Admin", user })
-                : RedirectToAction("Index", "Home",
-                    role.Result.Contains("Driver")
-                        ? new { Area = "Driver", id = user.Id }
-                        : new { Area = "User", id = user });
+        {
+            if (role.Result.Contains("Admin"))
+                return RedirectToAction("Index", "Home", new { Area = "Admin", id = user });
+            if (role.Result.Contains("User"))
+                return RedirectToAction("Index", "Home", new { Area = "User", id = user });
+            if (role.Result.Contains("Driver"))
+            {
+                var driver = _db.DriverInfos.Where(d => d.ApplicationUsersId == user.Id).FirstOrDefaultAsync();
+
+                try
+                {
+                    Console.WriteLine(driver.Result.ApplicationUsers.Email);
+                    switch (driver.Result.IsApprovedToDrive)
+                    {
+                        case 0:
+                            Console.WriteLine("hi");
+                            return RedirectToAction("Pending", "Home", new { Area = "Driver", id = user });
+                        case 1:
+                            RedirectToAction("Profile", "Home", new { Area = "Driver" });
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("Index", "Home", new { Area = "Driver", id = user.Id });
+                }
+            }
+        }
+
         return View(model);
     }
 
@@ -109,18 +127,16 @@ public class HomeController : Controller
         await _roleManager.CreateAsync(new IdentityRole { Name = "Driver" });
 
         var users = await _userManager.GetUsersInRoleAsync("Admin");
-        if (users.Count == 0)
+        if (users.Count != 0) return Ok("Data Generated");
+        var adminUser = new ApplicationUser
         {
-            var adminUser = new ApplicationUser
-            {
-                FirstName = "Admin",
-                LastName = "User",
-                Email = "admin@123.com",
-                UserName = "admin"
-            };
-            var res = await _userManager.CreateAsync(adminUser, "Pass@123");
-            await _userManager.AddToRoleAsync(adminUser, "admin");
-        }
+            FirstName = "Admin",
+            LastName = "User",
+            Email = "admin@123.com",
+            UserName = "admin"
+        };
+        var res = await _userManager.CreateAsync(adminUser, "Pass@123");
+        await _userManager.AddToRoleAsync(adminUser, "admin");
 
         return Ok("Data Generated");
     }

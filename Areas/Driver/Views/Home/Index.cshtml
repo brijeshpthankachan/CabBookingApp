@@ -1,88 +1,122 @@
-@model DriverKycModel
-
+@model DriverViewModel
 @{
-    Layout = "_NewLayout";
+    ViewData["Title"] = "Index";
 }
 
 
-
-<div class="container bg-light">
-
-        <div class="w-100 d-flex align-items-center justify-content-center pt-3 flex-column">
-            <h5 class="text-danger"> Your Account Needs further Verification </h5>
-            <p>Please be Patiant Until we Verify your Credentials</p>
-        </div>
-    <form  method="post">
-
-            <div class="d-flex justify-content-around  pt-5 mt-5">
-
-                <div class="" style="width:20%">
-
-                    <label asp-for="FirstName" class="form-lable" >First Name</label>
-                    <input asp-for="FirstName" class="form-control input-lg w-100" type="text">
-                    
-                    <label asp-for="LastName" class="form-label">Last Name</label>
-                    <input asp-for="LastName" class="form-control" type="text">
-
-                    <label asp-for="Email" class="form-lable">Email</label>
-                    <input asp-for="Email" class="form-control" type="Email">
-
-                    <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
-                    <input asp-for="PhoneNumber" class="form-control" type="text">
-
-                    <label class="form-lable">R C Number</label>
-                    <input asp-for="VehicleRegistrationNumber" class="form-control" type="text">
-                    <span asp-validation-for="VehicleRegistrationNumber" class="text-danger"></span>
+@{
+    Layout = null;
+}
 
 
-                    <label  asp-for="CabType" class="form-label">Cab Type</label>
-                    <input asp-for="CabType" class="form-control" type="text">
-                    <span asp-validation-for="CabType" class="text-danger"></span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-                    <label asp-for="LicenceNumber" class="form-lable">License Number</label>
-                    <input asp-for="LicenceNumber" class="form-control" type="text">
-                    <span asp-validation-for="LicenceNumber" class="text-danger"></span>
+    <link rel="stylesheet" href="~/css/BootTheme.css">
 
-                    <label  asp-for="AadharNumber" class="form-label">Aadhar Number</label>
-                    <input asp-for="AadharNumber" class="form-control" type="text">
-                    <span asp-validation-for="AadharNumber" class="text-danger"></span>
+    <style>
+        body,html{
+            margin:0px;
+            padding:0px;
+            font-family:'JetBrains Mono';
+        }
+        body{
+            height:100vh;
+            background: radial-gradient( circle farthest-corner at 10% 20%, rgba(90,92,106,1) 0%, rgba(32,45,58,1) 81.3% );
+        }
+    </style>
 
-                    <label  asp-for="PanNumber" class="form-lable">Pan Number</label>
-                    <input asp-for="PanNumber" class="form-control" type="text">
-                    <span asp-validation-for="PanNumber" class="text-danger"></span>
+</head>
+<body>
 
-                </div>
 
-                <div class="w-50" style="width:30%">
+<div class="container ">
 
-                    <label  asp-for="AddressLineOneHouseNameOrHouseNo" class="form-lable">House NUmber</label>
-                    <input asp-for="AddressLineOneHouseNameOrHouseNo" class="form-control" type="text">
-                    <span asp-validation-for="AddressLineOneHouseNameOrHouseNo" class="text-danger"></span>
+    <div class="w-100 d-flex align-items-center justify-content-center pt-3 flex-column">
+        <h5 class="text-danger"> Your Account Needs further Verification </h5>
+        <p>Please be Patiant Until we Verify your Credentials</p>
+    </div>
+    <form method="post">
 
-                    <label asp-for="AddresLineThreeLocality" class="form-label">Locality</label>
-                    <input asp-for="AddresLineThreeLocality" class="form-control" type="text">
-                    <span asp-validation-for="AddresLineThreeLocality" class="text-danger"></span>
+        <div class="d-flex justify-content-around  pt-5 ">
 
-                    <label asp-for="AddressLineTwoDistrict" class="form-lable">District</label>
-                    <input  asp-for="AddressLineTwoDistrict" class="form-control" type="text">
-                    <span asp-validation-for="AddressLineTwoDistrict" class="text-danger"></span>
+            <div class="" style="width:20%">
 
-                    <label class="form-label">State</label>
-                    <input asp-for="AddresLineFourState" class="form-control" type="text">
-                    <span asp-validation-for="AddresLineFourState" class="text-danger"></span>
+                <label asp-for="LicenceNumber" class="form-lable">License Number</label>
+                <input asp-for="LicenceNumber" class="form-control" type="text">
+                <span asp-validation-for="LicenceNumber" class="text-danger"></span>
 
-                    <label asp-for="AddresLineFivePin"  class="form-lable">PIN Code</label>
-                    <input asp-for="AddresLineFivePin" class="form-control" type="text">
-                    <span asp-validation-for="AddresLineFivePin" class="text-danger"></span>
+                <label asp-for="HouseNameOrNo" class="form-lable">House NUmber</label>
+                <input asp-for="HouseNameOrNo" class="form-control" type="text">
+                <span asp-validation-for="HouseNameOrNo" class="text-danger"></span>
 
-                </div>
- 
+
+                <label asp-for="District" class="form-lable">District</label>
+                <input asp-for="District" class="form-control" type="text">
+                <span asp-validation-for="District" class="text-danger"></span>
+
+                <label asp-for="Locality" class="form-label">Locality</label>
+                <input asp-for="Locality" class="form-control" type="text">
+                <span asp-validation-for="Locality" class="text-danger"></span>
+
+
+                <label asp-for="State" class="form-label">State</label>
+                <input asp-for="State" class="form-control" type="text">
+                <span asp-validation-for="State" class="text-danger"></span>
+
+
+                <label asp-for="RcNumber" class="form-lable">R C Number</label>
+                <input asp-for="RcNumber" class="form-control" type="text">
+                <span asp-validation-for="RcNumber" class="text-danger"></span>
+
 
             </div>
+
+            <div class="w-50" style="width:30%">
+
+
+                <label asp-for="PinCode" class="form-lable">PIN Code</label>
+                <input asp-for="PinCode" class="form-control" type="text">
+                <span asp-validation-for="PinCode" class="text-danger"></span>
+
+                <label asp-for="AadharNumber" class="form-label">Aadhar Number</label>
+                <input asp-for="AadharNumber" class="form-control" type="text">
+                <span asp-validation-for="AadharNumber" class="text-danger"></span>
+
+
+                <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                <input asp-for="PhoneNumber" class="form-control" type="text">
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+
+                <label asp-for="CabType" class="form-label">Cab Type</label>
+                <input asp-for="CabType" class="form-control" type="text">
+                <span asp-validation-for="CabType" class="text-danger"></span>
+
+                <label asp-for="CabName" class="form-lable"Cab Name></label>
+                <input asp-for="CabName" class="form-control" type="text">
+                <span asp-validation-for="CabName" class="text-danger"></span>
+
+                <label asp-for="ApplicationUsersId" class="form-lable"Cab Name></label>
+                <input asp-for="ApplicationUsersId" class="form-control" type="text" disabled>
+
+            </div>
+
+
+        </div>
         <div class="d-flex gap-2 mt-2 justify-content-end">
-            <button class="btn-lg btn btn-outline-primary" type="submit">Submit Details</button>
+            <button class="btn-lg btn btn-outline-info" type="submit">Submit Details</button>
         </div>
     </form>
 
-   
+
 </div>
+
+
+</body>
+</html>
