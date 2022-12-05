@@ -61,7 +61,7 @@ public class HomeController : Controller
             if (role.Result.Contains("Admin"))
                 return RedirectToAction("Index", "Home", new { Area = "Admin", id = user });
             if (role.Result.Contains("User"))
-                return RedirectToAction("Index", "Home", new { Area = "User", id = user });
+                return RedirectToAction("Index", "Home", new { Area = "User", id = user.Id });
             if (role.Result.Contains("Driver"))
             {
                 var driver = _db.DriverInfos.Where(d => d.ApplicationUsersId == user.Id).FirstOrDefaultAsync();
@@ -75,8 +75,8 @@ public class HomeController : Controller
                             Console.WriteLine("hi");
                             return RedirectToAction("Pending", "Home", new { Area = "Driver", id = user });
                         case 1:
-                            RedirectToAction("Profile", "Home", new { Area = "Driver" });
-                            break;
+                            Console.WriteLine("howdy ");
+                            return RedirectToAction("Profile", "Home", new { Area = "Driver",id = user.Id });
                     }
                 }
                 catch (Exception)
@@ -164,10 +164,19 @@ public class HomeController : Controller
         };
 
         var res = await _userManager.CreateAsync(driver, model.Password);
+        
 
         if (res.Succeeded)
         {
+            var id = await _userManager.FindByEmailAsync(driver.Email);
             await _userManager.AddToRoleAsync(driver, "Driver");
+            await _db.CabOnRoadStatusTable.AddAsync(new CabOnRoadStatus()
+            {
+                ApplicationUserID = id.Id,
+                IsDriving = true,
+                IsOnRoad = false
+            });
+            await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Login));
         }
 

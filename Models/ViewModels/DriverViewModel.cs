@@ -15,6 +15,8 @@ public class DriverViewModel
     [Required] public string CabName { get; set; }
     public ApplicationUser ApplicationUsers { get; set; }
     [Required] public string ApplicationUsersId { get; set; }
+    [Required] public string WorkLocation { get; set; }
+
 
     public int IsApprovedToDrive { get; set; } = -1;
 }

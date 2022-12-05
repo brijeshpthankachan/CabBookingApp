@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CabBookingApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221201125745_initial")]
-    partial class initial
+    [Migration("20221204121845_FirstMigration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,31 @@ namespace CabBookingApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CabBookingApp.Models.CabOnRoadStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDriving")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsOnRoad")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserID");
+
+                    b.ToTable("CabOnRoadStatusTable");
+                });
 
             modelBuilder.Entity("CabBookingApp.Models.ViewModels.DriverInfo", b =>
                 {
@@ -78,6 +103,10 @@ namespace CabBookingApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WorkLocation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -312,6 +341,17 @@ namespace CabBookingApp.Migrations
                         .HasColumnType("bit");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
+            modelBuilder.Entity("CabBookingApp.Models.CabOnRoadStatus", b =>
+                {
+                    b.HasOne("CabBookingApp.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("CabBookingApp.Models.ViewModels.DriverInfo", b =>

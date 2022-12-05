@@ -8,4 +8,5 @@ public class ApplicationDbContext : IdentityDbContext
 
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     public DbSet<DriverInfo> DriverInfos { get; set; }
+    public DbSet<CabOnRoadStatus> CabOnRoadStatusTable { get; set; }
 }

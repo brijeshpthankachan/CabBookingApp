@@ -36,6 +36,7 @@ public class HomeController : Controller
         {
             ApplicationUsersId = id,
             ApplicationUsers = usr,
+            WorkLocation = model.WorkLocation,
             LicenceNumber = model.LicenceNumber,
             HouseNameOrNo = model.HouseNameOrNo,
             District = model.District,
@@ -58,7 +59,7 @@ public class HomeController : Controller
 
     [HttpGet]
     [Route("/driver/profile")]
-    public IActionResult Profile()
+    public IActionResult Profile(string id )
     {
         return View();
     }

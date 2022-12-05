@@ -1,0 +1,2 @@
+- Add Redirection To home page after submittign verification info [ driver ]
+- submitting partially filled form gives exception [ driver ]

@@ -14,7 +14,8 @@ public class DriverInfo
     [Required] public string RcNumber { get; set; }
     [Required] public string CabType { get; set; }
     [Required] public string CabName { get; set; }
-
+    
+    [Required] public string WorkLocation { get; set; }
     public int IsApprovedToDrive { get; set; } = -1;
 
     [Required] public ApplicationUser ApplicationUsers { get; set; }

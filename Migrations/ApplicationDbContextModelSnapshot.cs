@@ -22,6 +22,31 @@ namespace CabBookingApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("CabBookingApp.Models.CabOnRoadStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDriving")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsOnRoad")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserID");
+
+                    b.ToTable("CabOnRoadStatusTable");
+                });
+
             modelBuilder.Entity("CabBookingApp.Models.ViewModels.DriverInfo", b =>
                 {
                     b.Property<int>("Id")
@@ -75,6 +100,10 @@ namespace CabBookingApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WorkLocation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -309,6 +338,17 @@ namespace CabBookingApp.Migrations
                         .HasColumnType("bit");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
+            modelBuilder.Entity("CabBookingApp.Models.CabOnRoadStatus", b =>
+                {
+                    b.HasOne("CabBookingApp.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("CabBookingApp.Models.ViewModels.DriverInfo", b =>

@@ -10,27 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2587415d-fc9d-4f93-9e81-dd6d212bade6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/265eff57-455f-4b70-a57a-43fff744abc3.vsidx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/4ef1586e-2020-4abe-b361-66e1808716f8.vsidx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/965fdef4-a6d2-423d-a874-f5a7b87e3a7b.vsidx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/dd8f742e-7c03-4389-8ddf-7c083a5a79dd.vsidx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Airport.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Areas/Driver/Views/Home/Pending.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ViewModels/DriverViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CabBookingApp.sln.DotSettings.user" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Isuues.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Migrations/20221204121845_FirstMigration.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Migrations/20221204121845_FirstMigration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/CabOnRoadStatus.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/ViewModels/UserDriverViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/CabBookingApp/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/04ade5a7-0479-4cb4-83f2-991961b2ba32.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/4ac81a88-e88d-4aea-9055-9e978b01da77.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/a17f08bc-24ef-448a-a881-41ba170305c0.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/FileContentIndex/c22d9c11-6a91-418b-92a5-1c53b7e1bec5.vsidx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/CabBookingApp/v17/.futdcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/CabBookingApp/v17/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/cabbookingapp.metadata.v5.2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/cabbookingapp.metadata.v5.2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/cabbookingapp.projects.v5.2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/cabbookingapp.projects.v5.2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Accounts/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/RegisterDriver.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/RegisterDriver.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Areas/Admin/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Admin/Controllers/HomeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Admin/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Admin/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Driver/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Driver/Controllers/HomeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Driver/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Driver/Views/Home/Index.cshtml" afterDir="false" />
@@ -39,39 +33,16 @@
       <change beforePath="$PROJECT_DIR$/CabBookingApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CabBookingApp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CabBookingApp.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/CabBookingApp.csproj.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobalUsings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlobalUsings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20221129040109_Initial.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20221129040109_Initial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/20221201125745_initial.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20221129070018_Added IsApprovedField.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/20221201125745_initial.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20221129070018_Added IsApprovedField.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20221201125745_initial.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20221201125745_initial.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/CabInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/CabInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/DriverInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DriverInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ViewModels/DriverKycModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ViewModels/LoginViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ViewModels/LoginViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml.css" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/ViewModels/DriverViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ViewModels/DriverViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Shared/_NewLayout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_NewLayout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/BootTheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/BootTheme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/bootstrap_sketchy.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/bootstrap_sketchy.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/bootstrap/dist/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/jquery-validation/dist/additional-methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/jquery-validation/dist/additional-methods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/jquery-validation/dist/jquery.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/jquery-validation/dist/jquery.validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/lib/jquery/dist/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/lib/jquery/dist/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/_ViewStart.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/BootTheme.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,26 +72,27 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "full.screen.before.presentation.mode": "false",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.CabBookingApp: IIS Express">
     <configuration name="CabBookingApp: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CabBookingApp.csproj" />
@@ -201,6 +173,11 @@
       <workItem from="1669902471279" duration="346000" />
       <workItem from="1669936454462" duration="2601000" />
       <workItem from="1669942629289" duration="708000" />
+      <workItem from="1670008191751" duration="124000" />
+      <workItem from="1670120095063" duration="934000" />
+      <workItem from="1670122955357" duration="136000" />
+      <workItem from="1670123118044" duration="276000" />
+      <workItem from="1670127964244" duration="28572000" />
     </task>
     <task id="LOCAL-00001" summary="Boilerplate">
       <created>1669487010903</created>
@@ -293,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669831825700</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added Status Based Navigation for Driver Role / added Account verification functionality for Admins">
+      <created>1670008295693</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1670008295693</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +323,11 @@
     <MESSAGE value="Added Ui For Driver Role" />
     <MESSAGE value="Partially Completed Driver Verification" />
     <MESSAGE value="Added Some Documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Some Documentation" />
+    <MESSAGE value="Added Status Based Navigation for Driver Role / added Account verification functionality for Admins" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Status Based Navigation for Driver Role / added Account verification functionality for Admins" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
