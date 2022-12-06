@@ -11,12 +11,17 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="~/css/BootTheme.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+
 
     <title>Document</title>
 
-    <style>
+    
+    @* <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> *@
+
+    <link href="~/css/bootstrap_sketchy.css" rel="stylesheet" >
+
+
+<style>
 
    
   
@@ -31,11 +36,11 @@
 <body>
 
 
-<div class="card my-sm-5 p-4 pt-4 font-monospace container   ">
+<div class="container bg-light pt-5 mt-5 ">
 
-    <div class="d-sm-flex justify-content-sm-around ">
+    <div class="d-sm-flex justify-content-sm-around p-2  p-5">
 
-        <div style="font-family:fantasy;" class=" w-50 hidden-mobile">
+        <div style="font-family:fantasy;" class=" w-50 hidden-mobile mt-5">
             <span style="font-size: xx-large;color: #000000">Yor Ride Starts Here.. </span><br>
             <span style="font-size: xx-large;color: #000000">Ride <span style="color: #9aff2e">To</span> Any Point Of The 🌍</span>
             <p style="font-family: cursive;color: #4f5050">Request free ride now 60 % off on your first ride</p>
@@ -99,9 +104,9 @@
                 <input asp-for="ConfirmPassword" type="password" class="form-control">
                 <span asp-validation-for="Password" class="text-danger"></span>
 
-                <div class="pt-2">
+                <div class="pt-2 d-flex justify-content-around">
                     <input asp-for="TermsAndConditions" type="checkbox" class="form-check-input">
-                    <label asp-for="TermsAndConditions" class="form-check-label ">I Accept The Terms and Conditions</label>
+                    <label asp-for="TermsAndConditions" class="form-check-label  px-5 ">I Accept The Terms and Conditions</label>
                 </div>
 
                 <hr>
@@ -116,10 +121,6 @@
 
         </div>
 
-        <div class="show-mobile">
-            <a href="" class="btn btn-outline-secondary"> Register as Driver</a>
-            <a href="" class="btn btn-outline-secondary">Sign in</a>
-        </div>
 
 
     </div>

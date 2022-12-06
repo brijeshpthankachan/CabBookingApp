@@ -10,39 +10,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2587415d-fc9d-4f93-9e81-dd6d212bade6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CabBookingApp.sln.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Isuues.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20221204121845_FirstMigration.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20221204121845_FirstMigration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/CabOnRoadStatus.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ViewModels/UserDriverViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Areas/User/Views/Home/Booking.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Areas/User/Views/Home/ViewBookings.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Migrations/20221206040102_AdeedBookingsTable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/ViewModels/Booking.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CabBookingApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/CabBookingApp/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/CabBookingApp/v17/.futdcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/CabBookingApp/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/CabBookingApp/v17/.suo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/cabbookingapp.metadata.v5.2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/cabbookingapp.metadata.v5.2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/cabbookingapp.projects.v5.2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/cabbookingapp.projects.v5.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Admin/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Admin/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Areas/Admin/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Admin/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Areas/Accounts/Views/Home/RegisterDriver.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Accounts/Views/Home/RegisterDriver.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Driver/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Driver/Controllers/HomeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/Driver/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Driver/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Areas/Driver/Views/Home/Pending.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/Driver/Views/Home/Pending.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/User/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/User/Controllers/HomeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Areas/User/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Areas/User/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CabBookingApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CabBookingApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CabBookingApp.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/CabBookingApp.csproj.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20221201125745_initial.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20221201125745_initial.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/DriverInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/DriverInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ViewModels/DriverViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ViewModels/DriverViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/_NewLayout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_NewLayout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/_ViewStart.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/BootTheme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20221204121845_FirstMigration.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/20221206040102_AdeedBookingsTable.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/20221204121845_FirstMigration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Shared/_NewLayout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_UserLayout.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +54,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/81a3bcf4bb6aa5e62a9839f9cfeeba6126496f4fa07d1e57b27a5176e42525/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1c28bae473d2c67c48df1154e19757ca558c6aa35425dc988fad559fb64d5/KnownRouteValueConstraint.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Areas/User/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Views/Shared/_UserLayout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -76,23 +69,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "full.screen.before.presentation.mode": "false",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.CabBookingApp: IIS Express">
     <configuration name="CabBookingApp: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CabBookingApp.csproj" />
@@ -177,7 +170,14 @@
       <workItem from="1670120095063" duration="934000" />
       <workItem from="1670122955357" duration="136000" />
       <workItem from="1670123118044" duration="276000" />
-      <workItem from="1670127964244" duration="28572000" />
+      <workItem from="1670127964244" duration="28934000" />
+      <workItem from="1670213116223" duration="1255000" />
+      <workItem from="1670215730720" duration="241000" />
+      <workItem from="1670225269077" duration="7685000" />
+      <workItem from="1670244290482" duration="1164000" />
+      <workItem from="1670245474890" duration="2528000" />
+      <workItem from="1670298335071" duration="4345000" />
+      <workItem from="1670319493125" duration="494000" />
     </task>
     <task id="LOCAL-00001" summary="Boilerplate">
       <created>1669487010903</created>
@@ -277,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670008295693</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added Cab Search Functionality For User">
+      <created>1670205664530</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1670205664530</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +331,8 @@
     <MESSAGE value="Partially Completed Driver Verification" />
     <MESSAGE value="Added Some Documentation" />
     <MESSAGE value="Added Status Based Navigation for Driver Role / added Account verification functionality for Admins" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Status Based Navigation for Driver Role / added Account verification functionality for Admins" />
+    <MESSAGE value="added Cab Search Functionality For User" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Cab Search Functionality For User" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
