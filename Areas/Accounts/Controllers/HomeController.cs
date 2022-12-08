@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿
 
-namespace CabBookingApp.Areas.Accounts.Controllers;
+namespace CSMS.Areas.Accounts.Controllers;
 
 [Area("Accounts")]
 public class HomeController : Controller
@@ -20,31 +19,22 @@ public class HomeController : Controller
         _roleManager = roleManager;
     }
 
-    [Route("")]
-    [HttpGet]
+    //-----------------------------------------------------------------------------------
+
+    [Route("/")]
     public IActionResult Index()
     {
         return View();
     }
 
 
-    [HttpGet]
-    [Route("/Login")]
-    [Route("Account/Login")]
-    public async Task<IActionResult> Login()
-    {
-        await GenerateData();
-        return View();
-    }
-
-
+    [Route("/")]
     [HttpPost]
-    [Route("/Login")]
-    [Route("Account/Login")]
-    public async Task<IActionResult> Login(LoginViewModel model)
+    public async Task<IActionResult> Index(LoginViewModel model)
     {
-        if (!ModelState.IsValid) return View(model);
+        //if (!ModelState.IsValid) return View(model);
 
+        Console.WriteLine("hi");
         var user = await _userManager.FindByEmailAsync(model.Email);
 
         if (user == null)
@@ -58,40 +48,36 @@ public class HomeController : Controller
 
         if (res.Succeeded)
         {
-            if (role.Result.Contains("Admin"))
-                return RedirectToAction("Index", "Home", new { Area = "Admin", id = user });
-            if (role.Result.Contains("User"))
-                return RedirectToAction("Index", "Home", new { Area = "User", id = user.Id });
-            if (role.Result.Contains("Driver"))
-            {
-                var driver = _db.DriverInfos.Where(d => d.ApplicationUsersId == user.Id).FirstOrDefaultAsync();
+            Console.WriteLine("hello");
 
-                try
-                {
-                    Console.WriteLine(driver.Result.ApplicationUsers.Email);
-                    switch (driver.Result.IsApprovedToDrive)
-                    {
-                        case 0:
-                            Console.WriteLine("hi");
-                            return RedirectToAction("Pending", "Home", new { Area = "Driver", id = user });
-                        case 1:
-                            Console.WriteLine("howdy ");
-                            return RedirectToAction("Profile", "Home", new { Area = "Driver",id = user.Id });
-                    }
-                }
-                catch (Exception)
-                {
-                    return RedirectToAction("Index", "Home", new { Area = "Driver", id = user.Id });
-                }
+            if (role.Result.Contains("Admin"))
+            {
+                Console.WriteLine("Admin here");
+                return RedirectToAction("Index", "Home", new { Area = "Admin" });
             }
+            if (role.Result.Contains("User"))
+            {
+                Console.WriteLine("User is here");
+                return RedirectToAction("Index", "Home", new { Area = "User" });
+            }
+               
+            return RedirectToAction("Index", "Home", new { Area = "Driver" });
         }
 
         return View(model);
     }
 
+    //-----------------------------------------------------------------------------------
+
+
+    [HttpGet]
+    public IActionResult RegisterUser()
+    {
+        return View();
+    }
+
     [HttpPost]
-    [Route("/")]
-    public async Task<IActionResult> Index(RegisterViewModel model)
+    public async Task<IActionResult> RegisterUser(RegisterUserViewModel model)
     {
         if (!ModelState.IsValid) return View(model);
 
@@ -100,26 +86,78 @@ public class HomeController : Controller
             FirstName = model.FirstName,
             LastName = model.LastName,
             Email = model.Email,
-            TermsAndConditions = model.TermsAndConditions,
+            PhoneNumber = model.PhoneNumber,
             UserName = Guid.NewGuid().ToString().Replace("-", "").ToLower()
         };
-        Console.WriteLine(user.TermsAndConditions);
-        if (user.TermsAndConditions)
+
+        var res = await _userManager.CreateAsync(user, model.Password);
+        if (res.Succeeded)
         {
-            var res = await _userManager.CreateAsync(user, model.Password);
-            if (res.Succeeded)
-            {
-                await _userManager.AddToRoleAsync(user, "User");
-                return Redirect("/");
-            }
+            await _userManager.AddToRoleAsync(user, "User");
+            return Redirect("/");
         }
+
 
         ModelState.AddModelError("", "An Error Has Occured While Creating New User");
         return View(model);
     }
 
+    //-----------------------------------------------------------------------------------
 
-    [Route("/generate")]
+    [HttpGet]
+    public IActionResult RegisterDriver()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RegisterDriver(RegisterDriverViewModel model)
+    {
+        var driver = new ApplicationUser
+        {
+            FirstName = model.FirstName,
+            LastName = model.LastName,
+            Email = model.Email,
+            PhoneNumber = model.PhoneNumber,
+            UserName = Guid.NewGuid().ToString().Replace("-", "")
+        };
+
+        var res = await _userManager.CreateAsync(driver, model.Password);
+
+        if (res.Succeeded)
+        {
+            await _userManager.AddToRoleAsync(driver, "Driver");
+
+            await _db.SaveChangesAsync();
+
+
+//Adding Cab Details
+
+            var userObject = await _userManager.FindByEmailAsync(model.Email);
+            var driverId = userObject.Id;
+
+            await _db.Cabs.AddAsync(new Cab
+            {
+                CabName = model.CabName,
+                CabType = model.CabType,
+                LicenseNumber = model.LicenseNumber,
+                RcNumber = model.RcNumber,
+                ApplicationUserID = driverId,
+                ApplicationUsers = userObject,
+                CabLocation = model.CabLocation,
+                IsOnRoad = false
+            });
+
+            await _db.SaveChangesAsync();
+            return Redirect("/");
+        }
+
+        ModelState.AddModelError("", "An error has occured");
+        return View(model);
+    }
+
+    //-----------------------------------------------------------------------------------
+
     public async Task<IActionResult> GenerateData()
     {
         await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
@@ -142,57 +180,4 @@ public class HomeController : Controller
     }
 
 
-    [HttpGet]
-    public IActionResult RegisterDriver()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> RegisterDriver(RegisterViewModel model)
-    {
-        Console.WriteLine("from driver reg");
-        if (!ModelState.IsValid)
-            return View(model);
-
-        var driver = new ApplicationUser
-        {
-            FirstName = model.FirstName,
-            LastName = model.LastName,
-            Email = model.Email,
-            UserName = Guid.NewGuid().ToString().Replace("-", "")
-        };
-
-        var res = await _userManager.CreateAsync(driver, model.Password);
-        
-
-        if (res.Succeeded)
-        {
-            var id = await _userManager.FindByEmailAsync(driver.Email);
-            await _userManager.AddToRoleAsync(driver, "Driver");
-            await _db.CabOnRoadStatusTable.AddAsync(new CabOnRoadStatus()
-            {
-                ApplicationUserID = id.Id,
-                IsDriving = true,
-                IsOnRoad = false
-            });
-            await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Login));
-        }
-
-        ModelState.AddModelError("", "An error has occured");
-        return View(model);
-    }
-
-    public async Task<IActionResult> Logout()
-    {
-        await _signInManager.SignOutAsync();
-        return Redirect("/");
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
 }

@@ -1,4 +1,5 @@
-﻿namespace MoviesApp.Models.ViewModels;
+﻿
+namespace CSMS.Models.ViewModels;
 
 public class LoginViewModel
 {

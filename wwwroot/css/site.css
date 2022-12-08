@@ -1,40 +1,18 @@
 html {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  html {
+    font-size: 16px;
+  }
 }
 
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-    margin-bottom: 60px;
-}
-
-
-@media (max-width: 767px) {
-    .hidden-mobile {
-        display: none;
-    }
-}
-
-.show-mobile {
-    display: none; /* hide by default */
-}
-
-@media (max-width: 700px) {
-    .show-mobile {
-        display: flex; /* or inline, or whichever style you prefer*/
-        justify-content: space-around;
-    }
+  margin-bottom: 60px;
 }

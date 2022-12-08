@@ -1,92 +1,159 @@
+﻿
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 
-namespace CabBookingApp.Areas.Driver.Controllers;
-
-[Area("Driver")]
-[Authorize(Roles = "Driver")]
-public class HomeController : Controller
+namespace CSMS.Areas.Driver.Controllers
 {
-    private readonly ApplicationDbContext _db;
-    private readonly UserManager<ApplicationUser> _userManager;
-
-
-    public HomeController(UserManager<ApplicationUser> userManager, ApplicationDbContext db)
-    {  
-        _userManager = userManager;
-        _db = db;
-    }
-
-    //--------------------------------------------------------------------------
-
-
-    [Route("/driver/home")]
-    [HttpGet]
-    public IActionResult Index(string id)
+    [Area("Driver")]
+    [Authorize(Roles = "Driver")]
+    public class HomeController : Controller
     {
-        return View();
-    }
 
-    [Route("/driver/home")]
-    [HttpPost]
-    public async Task<IActionResult> Index(string id, DriverViewModel model)
-    {
-        var usr = _userManager.FindByIdAsync(id).Result;
-        await _db.AddAsync(new DriverInfo
+
+        private readonly ApplicationDbContext _db;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public HomeController(ApplicationDbContext db, UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
-            ApplicationUsersId = id,
-            ApplicationUsers = usr,
-            WorkLocation = model.WorkLocation,
-            LicenceNumber = model.LicenceNumber,
-            HouseNameOrNo = model.HouseNameOrNo,
-            District = model.District,
-            Locality = model.Locality,
-            State = model.State,
-            RcNumber = model.RcNumber,
-            PinCode = model.PinCode,
-            AadharNumber = model.AadharNumber,
-            PhoneNumber = model.PhoneNumber,
-            CabType = model.CabType,
-            CabName = model.CabName,
-            IsApprovedToDrive = 0
-        });
+            _db = db;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _roleManager = roleManager;
+        }
 
-        await _db.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+
+        //---------------------------------------------------------------------------------------------------
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var driverId = _userManager.GetUserAsync(User).Result.Id;
+            
+            var bookingDetails = (from b in _db.Bookings
+                join a in _db.ApplicationUsers on b.UserId equals a.Id
+                where b.ApplicationUserId == driverId && b.BookingStatus == "Pending"
+                select new RegisterDriverViewModel()
+                {
+                    FirstName = a.FirstName + " " + a.LastName,
+                    PhoneNumber = a.PhoneNumber,
+                    Email = a.Email,
+                    Source = b.Source,
+                    Destination = b.Destination,
+                    BookingDate = b.BookingTime,
+                    BookingStatus = b.BookingStatus,
+                    Fair = b.Fair,
+                    BookingId = b.Id
+                }).ToList();
+
+            return View(bookingDetails);
+        }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> SetBookingStatus(int bookingId, string bookingStatusId)
+        {
+            Console.WriteLine("hi");
+            var bookingObject= await _db.Bookings.FindAsync(bookingId);
+            if (bookingStatusId == "1")
+            {
+                bookingObject.BookingStatus = "Payment Pending";
+                _db.Cabs.Where(m => m.ApplicationUserID == _userManager.GetUserAsync(User).Result.Id).FirstAsync()
+                    .Result.IsOnRoad = true;
+            }
+            else
+            {
+                bookingObject.BookingStatus = "Rejected";
+
+            }
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Home", new { Area = "Driver" });
+
+        }
+
+
+
+        //---------------------------------------------------------------------------------------------------
+
+        [HttpGet]
+        public async Task<IActionResult> ViewProfile()
+        {
+            var userObject = await _userManager.GetUserAsync(User);
+            var userId = userObject.Id;
+
+            var userCabObject =  await _db.Cabs.Include(m => m.ApplicationUsers).Where(m=>m.ApplicationUserID == userId).FirstAsync();
+
+
+            return View(new RegisterDriverViewModel
+            {
+                PhoneNumber = userObject.PhoneNumber,
+                FirstName = userObject.FirstName,
+                LastName = userObject.LastName,
+                Email = userObject.Email,
+                ApplicationUserID = userObject.Id,
+                CabName = userCabObject.CabName,
+                CabLocation = userCabObject.CabLocation,
+                CabType = userCabObject.CabType,
+                LicenseNumber = userCabObject.LicenseNumber,
+                RcNumber = userCabObject.RcNumber
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ViewProfile(RegisterDriverViewModel model)
+        {
+            var userObject = await _userManager.FindByIdAsync(model.ApplicationUserID);
+            var cabObject = await _db.Cabs.FirstAsync(m=>m.ApplicationUserID == userObject.Id);
+
+
+            userObject.FirstName = model.FirstName;
+            userObject.LastName = model.LastName;
+            userObject.Email = model.Email;
+            userObject.PhoneNumber = model.PhoneNumber;
+
+            cabObject.CabType = model.CabType;
+            cabObject.LicenseNumber = model.CabName;
+            cabObject.CabLocation = model.CabLocation;
+
+            await _db.SaveChangesAsync();
+              await _userManager.UpdateAsync(userObject);
+
+
+
+            return RedirectToAction("Index", "Home", new { Area = "Driver" });
+        }
+
+        //--------------------------------
+
+        [HttpGet]
+        public async Task<IActionResult> Payments()
+        {
+            var user =await _db.Bookings.Where(m => m.ApplicationUserId == _userManager.GetUserAsync(User).Result.Id && m.BookingStatus == "Payment Pending").OrderBy(m=>m.BookingTime).FirstAsync();
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Payments(Booking model)
+        {
+            try
+            {
+                var bookingInstance = await _db.Bookings.FindAsync(model.Id);
+                bookingInstance.Fair = model.Fair;
+                await _db.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Home", new { Area = "Driver" });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return View();
+            }
+         
+        }
+
     }
-
-    //--------------------------------------------------------------------------
-
-    [HttpGet]
-    [Route("/driver/profile")]
-    public IActionResult Profile(string id )
-    {
-        return View();
-    }
-
-    [HttpPost]
-    [Route("/driver/profile")]
-    public IActionResult Profile(DriverViewModel model)
-    {
-        return View();
-    }
-
-    //--------------------------------------------------------------------------
-
-    [HttpGet]
-    [Route("/driver/pending")]
-    public IActionResult Pending()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    [Route("/driver/pending")]
-    public IActionResult Pending(int i)
-    {
-        return Redirect("/");
-    }
-
-    //--------------------------------------------------------------------------
-  
 }

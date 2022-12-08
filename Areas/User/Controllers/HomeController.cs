@@ -1,152 +1,196 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
 
-namespace CabBookingApp.Areas.User.Controllers;
+namespace CSMS.Areas.User.Controllers;
 
 [Area("User")]
+[Authorize(Roles = "User")] 
 public class HomeController : Controller
 {
     private readonly ApplicationDbContext _db;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-
-    public HomeController(ApplicationDbContext db, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+    public HomeController(ApplicationDbContext db, UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
     {
         _db = db;
         _userManager = userManager;
         _signInManager = signInManager;
+        _roleManager = roleManager;
     }
 
-
-    [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
 
+
     [HttpPost]
-    public IActionResult Index(string location, string id)
+    public async Task<IActionResult> Index(string location, string cabtype)
     {
-        // LINQ
-        //     (from d in _db.DriverInfos
-        //     join c in _db.CabOnRoadStatusTable on d.ApplicationUsersId equals c.ApplicationUserID
-        //     where c.IsOnRoad == false && c.IsDriving == true && d.WorkLocation == location
-        //     select new UserDriverViewModel
-        //     {
-        //         ApplicatioUserId = d.ApplicationUsersId,
-        //         Id = d.Id,
-        //         CabName = d.CabName,
-        //         CabType = d.CabType,
-        //         PhoneNumber = d.PhoneNumber,
-        //         RcNumber = d.RcNumber,
-        //         FirstName = _userManager.FindByIdAsync(d.ApplicationUsersId).Result.FirstName,
-        //         LastName = _userManager.FindByIdAsync(d.ApplicationUsersId).Result.LastName
-        //     }).ToList();
 
-
-        // select * from d Driverinfos ,c cabonstaus where d.applicatiounserrsid = c.applicationusersid and c.isOnRoad = false and c.isDriving = true and d.location = location
-        // var res = _db.CabOnRoadStatusTable.Include(m=>m.ApplicationUser).Where(m=>m.)
-
-        var list = new List<UserDriverViewModel>();
-        foreach (var model in _db.DriverInfos.Join(_db.CabOnRoadStatusTable, d => d.ApplicationUsersId,
-                         c => c.ApplicationUserID, (d, c) => new { d, c })
-                     .Where(@t => @t.c.IsOnRoad == false && @t.c.IsDriving == true && @t.d.WorkLocation == location)
-                     .Select(@t => new UserDriverViewModel
-                     {
-                         ApplicatioUserId = @t.d.ApplicationUsersId,
-                         Id = @t.d.Id,
-                         CabName = @t.d.CabName,
-                         CabType = @t.d.CabType,
-                         PhoneNumber = @t.d.PhoneNumber,
-                         RcNumber = @t.d.RcNumber,
-                         FirstName = _userManager.FindByIdAsync(@t.d.ApplicationUsersId).Result.FirstName,
-                         LastName = _userManager.FindByIdAsync(@t.d.ApplicationUsersId).Result.LastName,
-                         UserId = id
-                     }))
-            list.Add(model);
-        return View(list);
-    }
-
-    [HttpGet]
-    public IActionResult Booking(string driverId,string userId,string cabName,string cabType,string phoneNumber,string firstName,string lastName)
-    {
-      
-            return View(new Booking
-            {
-                DriverId = driverId,
-                UserId = userId,
-                CabName = cabName,
-                CabType = cabType,
-                DriverPhoneNumber = phoneNumber,
-                Destination = "",
-                Source = "",
-                BookingTime = null,
-                BookingStatus = -1,
-                DriverName = firstName + " " + lastName
-            });
-    }
-    
-    
-    [HttpPost]
-    public async Task<IActionResult> Booking(Booking model)
-    {
-        Console.WriteLine("hi");
-        // if (!ModelState.IsValid) return View(model);
-        Console.WriteLine("hello");
+        var userID = await _userManager.GetUserAsync(User);
+        
         try
         {
-            await _db.Bookings.AddAsync(
-                new Booking
+
+            var driverInfo = (from c in _db.Cabs
+                join a in _db.ApplicationUsers on c.ApplicationUserID equals a.Id
+                where c.IsOnRoad == false && c.CabLocation == location.Trim() && c.CabType == cabtype
+                select new RegisterDriverViewModel
                 {
-                    DriverId = model.DriverId,
-                    UserId = model.UserId,
-                    CabName = model.CabName,
-                    CabType = model.CabType,
-                    DriverPhoneNumber = model.DriverPhoneNumber,
-                    Destination = model.Destination,
-                    Source = model.Source,
-                    BookingTime = DateTime.Now,
-                    BookingStatus = -1,
-                    DriverName = model.DriverName
-                });
+                    ApplicationUserID = a.Id,
+                    CabName = c.CabName,
+                    CabType = c.CabType,
+                    PhoneNumber = a.PhoneNumber,
+                    RcNumber = c.RcNumber,
+                    FirstName = a.FirstName,
+                    LastName = a.LastName,
+                    Email = a.Email,
+                    CurrentUserID = userID.Id
+
+
+                }).ToList();
+
+            return driverInfo == null ? View() : View(driverInfo);
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return View();
+        }
+  
+
+    }
+
+
+
+    //----------------------------------------------------------------------
+    [HttpGet]
+    public async Task<IActionResult> ViewProfile()
+    {
+        var userObject = await _userManager.GetUserAsync(User);
+
+        return View(new RegisterUserViewModel
+        {
+            PhoneNumber = userObject.PhoneNumber,
+            FirstName = userObject.FirstName,
+            LastName = userObject.LastName,
+            Email = userObject.Email,
+            UserId = userObject.Id
+        });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> ViewProfile(RegisterUserViewModel model)
+    {
+        var userObject = await _userManager.FindByIdAsync(model.UserId);
+
+
+        userObject.FirstName = model.FirstName;
+        userObject.LastName = model.LastName;
+        userObject.Email = model.Email;
+        userObject.PhoneNumber = model.PhoneNumber;
+
+        await _userManager.UpdateAsync(userObject);
+
+        return RedirectToAction("Index", "Home", new { Area = "User" });
+    }
+    //----------------------------------------------------------------------
+
+ 
+
+    //----------------------------------------------------------------------
+
+    [HttpGet]
+    public async Task<IActionResult> BookCab(string id)
+    {
+        var currentUser = _userManager.GetUserAsync(User).Result;
+
+        var driver = await _db.Cabs.Include(m => m.ApplicationUsers).Where(m => m.ApplicationUserID == id).FirstAsync();
+
+
+        var objectForBookingView = new RegisterDriverViewModel
+        {
+            FirstName = driver.ApplicationUsers.FirstName+ " " + driver.ApplicationUsers.LastName,
+            CurrentUserID = currentUser.Id,
+            PhoneNumber = driver.ApplicationUsers.PhoneNumber,
+            Email = driver.ApplicationUsers.Email,
+            CabName = driver.CabName,
+            CabType = driver.CabType,
+            ApplicationUserID = driver.ApplicationUserID
+            
+
+        };
+
+        return View(objectForBookingView);
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> BookCab(RegisterDriverViewModel model)
+    {
+
+
+
+        try
+        {
+            await _db.Bookings.AddAsync(new Booking
+            {
+
+                ApplicationUserId = model.ApplicationUserID,
+                UserId = model.CurrentUserID,
+                ApplicationUsers = await _userManager.FindByIdAsync(model.ApplicationUserID),
+                Source = model.Source,
+                Destination = model.Destination,
+                BookingTime = DateTime.UtcNow,
+                BookingStatus = "Pending",
+                Fair = 0.0
+
+            });
             await _db.SaveChangesAsync();
-            return RedirectToAction("Index", "Home", new { Area = "User", id = model.UserId });
+
+            return RedirectToAction("Index", "Home", new { Area = "User" });
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             return View(model);
         }
-       
-        // return Ok("booked");
+
 
     }
-    
-    public IActionResult ViewBookings()
-    {
-        return View();
-    }
+
+    //----------------------------------------------------------------------
 
     [HttpGet]
-    public IActionResult Profile()
+    public IActionResult ViewBookings()
     {
-        var user = _userManager.GetUserAsync(User).Result;
-        return View(user);
+        var bookingList =_db.Bookings.Include(m=>m.ApplicationUsers).Where(m=>m.UserId == _userManager.GetUserAsync(User).Result.Id);
+        return View(bookingList);
+    }
+
+
+    [HttpGet]
+    public IActionResult Payment(int id)
+    {
+        return View(_db.Bookings.FindAsync(id).Result);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Profile(ApplicationUser model)
+    public async Task<IActionResult> Payment(Booking model)
     {
-        var user = _userManager.FindByIdAsync(model.Id).Result;
+        Console.WriteLine(model.Id);
+        var bookingInstance = await _db.Bookings.FindAsync(model.Id);
+        bookingInstance.BookingStatus = "Completed";
+        _db.Cabs.Where(m => m.ApplicationUserID == model.ApplicationUserId).First().IsOnRoad = false;
+        await _db.SaveChangesAsync();
+        return RedirectToAction("ViewBookings", "Home", new { Area = "User" });
 
-        user.FirstName = model.FirstName;
-        user.LastName = model.LastName;
-        user.Email = model.Email;
-        user.PhoneNumber = model.PhoneNumber;
-
-        await _userManager.UpdateAsync(user);
-
-        return RedirectToAction("Index", "Home", new { Area = "User" });
     }
+
+    //----------------------------------------------------------------------
 
 }

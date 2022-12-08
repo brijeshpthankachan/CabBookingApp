@@ -1,8 +1,11 @@
-namespace CabBookingApp.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
-public class ApplicationUser : IdentityUser
+namespace CSMS.Models
 {
-    [StringLength(15)] public string FirstName { get; set; }
-    public bool TermsAndConditions { get; set; }
-    [StringLength(15)] public string LastName { get; set; }
+    public class ApplicationUser:IdentityUser
+    {
+        [StringLength(15)] public string? FirstName { get; set; }
+        [StringLength(15)] public string? LastName { get; set; }
+    }
 }

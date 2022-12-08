@@ -1,8 +1,8 @@
+﻿global using CSMS.Models;
 global using System.ComponentModel.DataAnnotations;
-global using Microsoft.EntityFrameworkCore;
-global using CabBookingApp.Models.ViewModels;
-global using CabBookingApp.Models;
-global using CabBookingApp.Data;
+global using CSMS.Data;
 global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Mvc;
+global using CSMS.Models.ViewModels;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-global using MoviesApp.Models.ViewModels;
+global using Microsoft.EntityFrameworkCore;

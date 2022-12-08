@@ -1,94 +1,104 @@
+﻿
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 
-namespace CabBookingApp.Areas.Admin.Controllers;
-
-[Area("Admin")]
-[Authorize(Roles = "Admin")]
-public class HomeController : Controller
+namespace CSMS.Areas.Admin.Controllers
 {
-    private readonly ApplicationDbContext _db;
-    private readonly RoleManager<IdentityRole> _roleManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
-    private readonly UserManager<ApplicationUser> _userManager;
-
-    public HomeController(ApplicationDbContext db, UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+    public class HomeController : Controller
     {
-        _db = db;
-        _userManager = userManager;
-        _signInManager = signInManager;
-        _roleManager = roleManager;
-    }
 
-    [HttpGet]
-    [Route("/admin/home")]
-    [Route("/admin")]
-    public IActionResult Index()
-    {
-        var drivers = from item in _db.DriverInfos where item.IsApprovedToDrive == 0 select item;
-        var UserList = new List<DriverInfo>();
 
-        foreach (var item in drivers)
+        private readonly ApplicationDbContext _db;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public HomeController(ApplicationDbContext db, UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
-            var logininfo = _userManager.FindByIdAsync(item.ApplicationUsersId);
-            var obj = new DriverInfo
+            _db = db;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _roleManager = roleManager;
+        }
+        //---------------------------------------------------------------------------------------------
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+        //---------------------------------------------------------------------------------------------
+
+        [HttpGet]
+        public IActionResult ViewProfile()
+        {
+            var adminUser = _userManager.GetUserAsync(User).Result;
+            return View(new RegisterUserViewModel
             {
-                Id = item.Id,
-                AadharNumber = item.AadharNumber,
-                WorkLocation = item.WorkLocation,
-                ApplicationUsers = logininfo.Result,
-                ApplicationUsersId = item.ApplicationUsersId,
-                IsApprovedToDrive = item.IsApprovedToDrive,
-                CabName = item.CabName,
-                CabType = item.CabType,
-                PinCode = item.PinCode,
-                District = item.District,
-                HouseNameOrNo = item.HouseNameOrNo,
-                LicenceNumber = item.LicenceNumber,
-                Locality = item.Locality,
-                PhoneNumber = item.PhoneNumber,
-                RcNumber = item.RcNumber,
-                State = item.State
-            };
-            UserList.Add(obj);
+                FirstName = adminUser.FirstName,
+                LastName = adminUser.LastName,
+                Email = adminUser.Email,
+                PhoneNumber = adminUser.PhoneNumber
+            });
         }
 
-        return View(UserList);
-    }
 
-    [HttpGet]
-    public IActionResult Profile(int id)
-    {
-        var driver = (from i in _db.DriverInfos where i.Id == id select i).First();
-        var driverLoginInfo = _userManager.FindByIdAsync(driver.ApplicationUsersId).Result;
-
-        return View(new DriverViewModel
+        [HttpPost]
+        public async Task<IActionResult> ViewProfile(RegisterUserViewModel model)
         {
-            ApplicationUsersId = driver.ApplicationUsersId,
-            WorkLocation = driver.WorkLocation, 
-            AadharNumber = driver.AadharNumber,
-            ApplicationUsers = driverLoginInfo,
-            IsApprovedToDrive = driver.IsApprovedToDrive,
-            CabName = driver.CabName,
-            CabType = driver.CabType,
-            PinCode = driver.PinCode,
-            District = driver.District,
-            HouseNameOrNo = driver.HouseNameOrNo,
-            LicenceNumber = driver.LicenceNumber,
-            Locality = driver.Locality,
-            PhoneNumber = driver.PhoneNumber,
-            RcNumber = driver.RcNumber,
-            State = driver.State
-        });
-    }
+            var userObject = await _userManager.FindByIdAsync(_userManager.GetUserAsync(User).Result.Id);
 
-    [HttpPost]
-    public async Task<IActionResult> Profile(int id, DriverViewModel model)
-    {
-        var driver = await _db.DriverInfos.FindAsync(id);
-        driver.IsApprovedToDrive = 1;
-        await _db.SaveChangesAsync();
-        return RedirectToAction("Index", "Home", new { Area = "Admin" });
+
+            userObject.FirstName = model.FirstName;
+            userObject.LastName = model.LastName;
+            userObject.Email = model.Email;
+            userObject.PhoneNumber = model.PhoneNumber;
+
+            await _userManager.UpdateAsync(userObject);
+
+            return RedirectToAction("Index","Home",new {Area = "Admin"});
+        }
+
+
+        //---------------------------------------------------------------------------------------------
+
+        [HttpGet]
+        public async Task<IActionResult> ViewUsers()
+        {
+            var users=await _userManager.GetUsersInRoleAsync("User");
+            
+            return View(users);
+        }
+        //---------------------------------------------------------------------------------------------
+
+        public async Task<IActionResult> ViewDrivers()
+        {
+            var users = await _userManager.GetUsersInRoleAsync("Driver");
+
+            return View(users);
+        }
+
+        //---------------------------------------------------------------------------------------------
+        [HttpGet]
+        public IActionResult ViewReports()
+        {
+            var bookings = _db.Bookings.ToList();
+            var bookingList = bookings.Select(i => new RegisterDriverViewModel
+                {
+                    CustomerName = _userManager.FindByIdAsync(i.UserId).Result.FirstName,
+                    FirstName = _userManager.FindByIdAsync(i.ApplicationUserId).Result.FirstName,
+                    BookingDate = i.BookingTime,
+                    BookingStatus = i.BookingStatus,
+                    Source = i.Source,
+                    Destination = i.Destination,
+                    Fair = i.Fair
+                })
+                .ToList();
+
+            return View(bookingList);
+        }
+        //---------------------------------------------------------------------------------------------
+
     }
 }
