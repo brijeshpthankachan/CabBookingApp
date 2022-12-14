@@ -1,0 +1,48 @@
+﻿@model RegisterUserViewModel
+
+
+    <div class="card  p-5" style="width:400px ">
+
+        <div class="d-flex justify-content-end  py-4">
+
+            <input type="button" value="Delete Account" class="btn btn-danger">
+        </div>
+    <hr>
+    <div class="d-flex justify-content-center">
+        <img src="https://www.sainik.telangana.gov.in/images/rswo-profilepic.png" alt="" class="img-fluid rounded-circle" width="150px">
+    </div>
+    <hr>
+        <form method="post">
+
+
+            <label class="form-label">First Name</label>
+            <input asp-for="FirstName" type="text" class="form-control">
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+
+
+            <label class="form-label">Last Name</label>
+            <input asp-for="LastName" type="text" class="form-control">
+            <span asp-validation-for="LastName" class="text-danger"></span>
+
+
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" type="text" class="form-control">
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+
+            <label asp-for="PhoneNumber" class="form-label">Phone number</label>
+            <input asp-for="PhoneNumber" type="text" class="form-control">
+
+            <input asp-for="UserId" type="text" class="form-control" hidden>
+
+        <hr>
+            <div class="d-flex justify-content-end ">
+                <input type="submit" value="Update Details" class="btn btn-info">
+
+            </div>
+
+        </form>
+
+    </div>
+
+

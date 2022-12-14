@@ -1,0 +1,77 @@
+﻿@model Booking
+<div>
+
+
+    <form method="post">
+
+        <table class="table " style="width: 700px">
+            <tr>
+
+                <td>
+                    <span class="btn btn-light ">Booking Id</span>
+                </td>
+                <td>
+                    <span class="btn btn-dark mx-5">-</span>
+                </td>
+                <td>
+                    <span class="btn btn-light ">@Model.Id</span>
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    <span class="btn btn-light ">@Model.Source</span>
+
+                </td>
+                <td>
+                    <span class="btn btn-dark mx-5">→</span>
+
+                </td>
+                <td>
+                    <span class="btn btn-light ">@Model.Destination</span>
+
+                </td>
+            </tr>
+            <tr >
+
+                <td>
+                    <span class="btn btn-light ">
+                        Date
+                        & Time
+                    </span>
+
+                </td>
+                <td>
+                    <span class="btn btn-dark  mx-5">-</span>
+
+                </td>
+                <td>
+                    <span class="btn btn-light ">@Model.BookingTime</span>
+
+                </td>
+            </tr>
+            <tr >
+
+                <td>
+                    <span class="btn btn-light ">
+                        Amount To Pay
+                    </span>
+
+                </td>
+                <td>
+                    <span class="btn btn-dark  mx-5">-</span>
+                </td>
+                <td>
+                    <input type="text" asp-for="Fair" class="btn btn-light">
+
+                </td>
+            </tr>
+        </table>
+        <input type="text" asp-for="Id" hidden>
+        <div class="d-flex justify-content-end pt-4">
+            <input type="submit" class="btn btn-primary" value="Send Invoice">
+        </div>
+    </form>
+
+
+</div>

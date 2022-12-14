@@ -1,0 +1,55 @@
+﻿@model RegisterDriverViewModel
+<div>
+
+    <form method="post">
+
+        <label class="form-label" asp-for="Source">Enter Source</label>
+        <input class="form-control" type="text" asp-for="Source">
+        <span asp-validation-for="Source" class="text-danger"></span>
+
+        <label class="form-label" asp-for="Destination">Enter Destination</label>
+        <input class="form-control" type="text" asp-for="Destination">
+        <span asp-validation-for="Destination" class="text-danger"></span>
+
+        <div class="card bg-light p-3 mt-3">
+          
+            <div class="d-flex justify-content-between pt-3 align-items-center">
+                <span style="width:180px; " class="btn btn-info">Driver's  Name</span>
+                <span class="mx-3">|</span>
+                <input class="btn btn-outline-info text-bg-dark" type="text" asp-for="FirstName" readonly>
+            </div>
+
+            <hr>
+            <div class="d-flex justify-content-between">
+                <input style="width:180px; " class="btn btn-outline-info text-bg-info " style="margin-right: 20px; " type="text" asp-for="CabName" readonly>
+                <span>|</span>
+
+                <input  class=" btn btn-outline-info text-bg-dark" type="text" asp-for="CabType" readonly>
+            </div>
+
+            <hr>
+            <div class="d-flex justify-content-between pt-3 align-items-center">
+                <span style="width:180px; " class="btn btn-info">Driver's  Number</span>
+                <span>|</span>
+                <input class="btn btn-outline-info text-bg-dark" type="text" asp-for="PhoneNumber" readonly>
+            </div>
+        </div>
+
+
+
+        <input class="form-control d-none" type="text" asp-for="CurrentUserID" readonly>
+
+        <input class="form-control d-none" type="text" asp-for="ApplicationUserID" readonly>
+
+
+
+
+        <div class="d-flex pt-2 justify-content-end">
+            <input type="submit" class="btn btn-success" value="Confirm Booking">
+        </div>
+
+
+
+    </form>
+
+</div>

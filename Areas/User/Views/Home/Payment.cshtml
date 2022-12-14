@@ -1,0 +1,40 @@
+﻿@model Booking
+
+<div>
+
+    <form method="post">
+        <div class="bg-light p-4 rounded-2">
+
+            <label class="form-label">Amount to Pay</label>
+            <input type="text" asp-for="Fair" class="form-control" readonly>
+
+            <label class="form-label pt-2">Card Number</label>
+            <input type="text" class="form-control" placeholder="XXXX - XXXX - XXXX">
+            <label for="" class="form-label pt-2">Owner Name</label>
+            <input type="text" class="form-control " placeholder="">
+
+            <div class="d-flex pt-3">
+                <div class="w-75 " style="margin-right: 5px">
+                    <Label class="form-label">Expiry Date</Label>
+                    <input type="date" class="form-control" required>
+                </div>
+                <div class="w-25">
+                    <Label class="form-label">CVV</Label>
+
+                    <input type="text" class="form-control" placeholder="XXX">
+
+                </div>
+
+
+            </div>
+            <input type="text" asp-for="ApplicationUserId" hidden>
+            <input type="text" asp-for="Id" hidden>
+            <div class="pt-4">
+
+                <input type="submit" class="btn btn-primary w-100" value="Pay Now">
+            </div>
+
+        </div>
+    </form>
+
+</div>
